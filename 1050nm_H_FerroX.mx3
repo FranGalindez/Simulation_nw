@@ -3,6 +3,7 @@
 //----------------------------------------------------------
 
 d := 70 // cylinder of diameter
+l := 1050 // cylinder height
 ACo := 31e-12
 MCo := 1440e3
 K1Co := 410e3
@@ -30,6 +31,9 @@ saveas(m, "geom")
 //Regions
 //----------------------------------------------------------
 
+defregion(1, zrange(-525e-9, -175e-9))  // first cylinder 
+defregion(2, zrange(-175e-9,175e-9))   // second cylinder  
+defregion(3, zrange(175e-9, 525e-9))   // third cylinder   
 save(regions)
 //----------------------------------------------------------
 //Parameters region 1
