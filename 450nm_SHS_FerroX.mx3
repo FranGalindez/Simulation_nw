@@ -1,0 +1,83 @@
+//----------------------------------------------------------
+//Important variables
+//----------------------------------------------------------
+
+d := 70 // cylinder of diameter
+l := 450 // cylinder height
+ACo := 31e-12
+MCo := 1440e3
+K1Co := 410e3
+ANi := 8e-12
+MNi := 490e3
+K1Ni := -5e3
+cl := 2.5
+
+//----------------------------------------------------------
+//Universe and cells
+//----------------------------------------------------------
+
+SetGridSize(d/cl,d/cl,l/cl)
+SetCellSize(2.5e-9, 2.5e-9, 2.5e-9)
+
+//----------------------------------------------------------
+//Geometry
+//----------------------------------------------------------
+
+a := cylinder(70e-9, 450e-9)
+setgeom( a )
+saveas(m, "geom")
+
+//----------------------------------------------------------
+//Regions
+//----------------------------------------------------------
+
+defregion(1, zrange(-225e-9, -75e-9))  // first cylinder 
+defregion(2, zrange(-75e-9,75e-9))   // second cylinder  
+defregion(3, zrange(75e-9, 225e-9))   // third cylinder   
+save(regions)
+//----------------------------------------------------------
+//Parameters region 2
+//----------------------------------------------------------
+  
+Msat.setregion(2, MCo) //material parameters of Co (Hard)
+Aex.setregion(2, ACo)
+Ku1.setregion(2, K1Co)
+anisU.setregion(2, vector(0,0,1))
+
+     
+//----------------------------------------------------------
+//Parameters region 1
+//----------------------------------------------------------
+
+Msat.setregion(1, MNi) //material parameters of Py (Soft)
+Aex.setregion(1, ANi)
+Ku1.setregion(1, K1Ni)
+anisU.setregion(1, vector(0,0,1))
+
+//----------------------------------------------------------
+//Parameters region 3
+//----------------------------------------------------------
+
+Msat.setregion(3, MNi)    //material parameters of Co (Hard)
+Aex.setregion(3, ANi)
+Ku1.setregion(3, K1Ni)
+anisU.setregion(3, vector(0,0,1))
+
+//----------------------------------------------------------
+//initial magnetization states
+//----------------------------------------------------------
+
+m = Uniform(1,0.1,0)
+saveas(m, "FerroX")
+
+TableAdd(m_full)
+TableAdd(B_ext)
+TableAdd(E_exch)
+TableAdd(E_demag)
+TableAdd(E_zeeman)
+TableAdd(E_total)
+
+runwhile(maxtorque > 1e-4) 
+Tablesave()
+Save(m)
+

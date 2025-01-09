@@ -1,0 +1,84 @@
+//----------------------------------------------------------
+//Important variables
+//----------------------------------------------------------
+
+d := 70 // cylinder of diameter
+l := 300 // cylinder height
+ACo := 31e-12
+MCo := 1440e3
+K1Co := 410e3
+ANi := 8e-12
+MNi := 490e3
+K1Ni := -5e3
+cl := 2.5
+
+//----------------------------------------------------------
+//Universe and cells
+//----------------------------------------------------------
+
+SetGridSize(d/cl,d/cl,l/cl)
+SetCellSize(2.5e-9, 2.5e-9, 2.5e-9)
+
+//----------------------------------------------------------
+//Geometry
+//----------------------------------------------------------
+
+a := cylinder(70e-9, 300e-9)
+setgeom( a )
+saveas(m, "geom")
+
+//----------------------------------------------------------
+//Regions
+//----------------------------------------------------------
+
+defregion(1, zrange(-150e-9, -50e-9))  // first cylinder 
+defregion(2, zrange(-50e-9,50e-9))   // second cylinder  
+defregion(3, zrange(50e-9, 150e-9))   // third cylinder   
+save(regions)
+
+//----------------------------------------------------------
+//Parameters region 1
+//----------------------------------------------------------
+  
+Msat.setregion(1, MCo) //material parameters of Co (Hard)
+Aex.setregion(1, ACo)
+Ku1.setregion(1, K1Co)
+anisU.setregion(1, vector(0,0,1))
+
+     
+//----------------------------------------------------------
+//Parameters region 2
+//----------------------------------------------------------
+
+Msat.setregion(2, MNi) //material parameters of Py (Soft)
+Aex.setregion(2, ANi)
+Ku1.setregion(2, K1Ni)
+anisU.setregion(2, vector(0,0,1))
+
+//----------------------------------------------------------
+//Parameters region 3
+//----------------------------------------------------------
+
+Msat.setregion(3, MCo)    //material parameters of Co (Hard)
+Aex.setregion(3, ACo)
+Ku1.setregion(3, K1Co)
+anisU.setregion(3, vector(0,0,1))
+
+//----------------------------------------------------------
+//initial magnetization states
+//----------------------------------------------------------
+
+m = Vortex(1,-1)
+saveas(m, "vortex")
+
+TableAdd(m_full)
+TableAdd(B_ext)
+TableAdd(E_exch)
+TableAdd(E_demag)
+TableAdd(E_zeeman)
+TableAdd(E_total)
+
+runwhile(maxtorque > 1e-4) 
+Tablesave()
+Save(m)
+
