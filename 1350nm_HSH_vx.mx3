@@ -40,26 +40,26 @@ save(regions)
 //Parameters region 1
 //----------------------------------------------------------
   
-Msat.setregion(2, MCo) //material parameters of Py (Soft)
-Aex.setregion(2, ACo)
-Ku1.setregion(3, KCo)
-anisU.setregion(3, vector(0,0,1))
+Msat.setregion(1, MCo) //material parameters of Py (Soft)
+Aex.setregion(1, ACo)
+Ku1.setregion(1, KCo)
+anisU.setregion(1, vector(0,0,1))
 
 //----------------------------------------------------------
 //Parameters region 2
 //----------------------------------------------------------
 
-Msat.setregion(3, MNi)    //material parameters of Co (Hard)
-Aex.setregion(3, ANi)
-Ku1.setregion(3, KNi)
-anisU.setregion(3, vector(0,0,1))
+Msat.setregion(2, MNi)    //material parameters of Co (Hard)
+Aex.setregion(2, ANi)
+Ku1.setregion(2, KNi)
+anisU.setregion(2, vector(0,0,1))
 
 //----------------------------------------------------------
 //Parameters region 3
 //----------------------------------------------------------
 
-Msat.setregion(2, MCo) //material parameters of Py (Soft)
-Aex.setregion(2, ACo)
+Msat.setregion(3, MCo) //material parameters of Py (Soft)
+Aex.setregion(3, ACo)
 Ku1.setregion(3, KCo)
 anisU.setregion(3, vector(0,0,1))
 

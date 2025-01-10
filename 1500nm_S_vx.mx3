@@ -52,8 +52,8 @@ anisU.setregion(1, vector(0,0,1))
 
 Msat.setregion(2, MNi) //material parameters of Py (Soft)
 Aex.setregion(2, ANi)
-Ku1.setregion(3, KNi)
-anisU.setregion(3, vector(0,0,1))
+Ku1.setregion(2, KNi)
+anisU.setregion(2, vector(0,0,1))
 
 //----------------------------------------------------------
 //Parameters region 3
