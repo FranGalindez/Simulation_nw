@@ -23,7 +23,6 @@ SetCellSize(2.5e-9, 2.5e-9, 2.5e-9)
 //Geometry
 //----------------------------------------------------------
 
-a := cylinder(70e-9, 450e-9)
 a := cylinder(70e-9, 1050e-9)
 setgeom( a )
 saveas(m, "geom")
