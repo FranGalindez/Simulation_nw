@@ -1,5 +1,5 @@
 //----------------------------------------------------------
-Important variables
+//Important variables
 //----------------------------------------------------------
 
 d := 70 // cylinder of diameter
@@ -13,14 +13,14 @@ KNi := -5e3
 cl := 2.5
 
 //----------------------------------------------------------
-Universe and cells
+//Universe and cells
 //----------------------------------------------------------
 
 SetGridSize(d/cl,d/cl,l/cl)
 SetCellSize(2.5e-9, 2.5e-9, 2.5e-9)
 
 //----------------------------------------------------------
-Geometry
+//Geometry
 //----------------------------------------------------------
 
 a := cylinder(70e-9, 1500e-9)
@@ -28,7 +28,7 @@ setgeom( a )
 saveas(m, "geom")
 
 //----------------------------------------------------------
-Regions
+//Regions
 //----------------------------------------------------------
 
 defregion(1, zrange(-750e-9, -250e-9))  // first cylinder 
@@ -37,7 +37,7 @@ defregion(3, zrange(250e-9, 750e-9))   // third cylinder
 save(regions)
 
 //----------------------------------------------------------
-Parameters region 1
+//Parameters region 1
 //----------------------------------------------------------
   
 Msat.setregion(1, MCo) //material parameters of Co (Hard)
@@ -47,7 +47,7 @@ anisU.setregion(1, vector(0,0,1))
 
      
 //----------------------------------------------------------
-Parameters region 2
+//Parameters region 2
 //----------------------------------------------------------
 
 Msat.setregion(2, MCo) //material parameters of Py (Soft)
@@ -56,7 +56,7 @@ Ku1.setregion(2, KCo)
 anisU.setregion(2, vector(0,0,1))
 
 //----------------------------------------------------------
-Parameters region 3
+//Parameters region 3
 //----------------------------------------------------------
 
 Msat.setregion(3, MCo)    //material parameters of Co (Hard)
@@ -65,10 +65,10 @@ Ku1.setregion(3, KCo)
 anisU.setregion(3, vector(0,0,1))
 
 //----------------------------------------------------------
-Vortex
+//Vortex
 //----------------------------------------------------------
 
-m = uniform(0, 0, 1)
+m = uniform(0.1, 0.1, 1)
 
 //----------------------------------------------------------
 Relax and Energy
