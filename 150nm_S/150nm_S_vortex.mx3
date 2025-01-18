@@ -68,7 +68,7 @@ anisU.setregion(3, vector(0,0,1))
 //LEA EL ARCHIVO DE MINIMA ENERGIA 
 //----------------------------------------------------------
 
-m.loadfile("nombre.ovf")
+m.loadfile("m000000.ovf")
 
 //----------------------------------------------------------
 //Relax en energia
